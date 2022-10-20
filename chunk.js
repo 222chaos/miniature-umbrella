@@ -21,17 +21,38 @@ function chunk(list, size) {
   }
   return res;
 }
-// console.log(chunk([1, 2, 3, 4, 5], 0));
-console.log(chunk([1, 2, 3, 4, 5], -1));
-console.log(chunk([1, 2, 3, 4, 5], 2));
-console.log(chunk([1, 2, 3, 4, 5], 3));
-console.log(chunk([1, 2, 3, 4, 5], 4));
-console.log(chunk([1, 2, 3, 4, 5], 5));
-console.log(chunk([1, 2, 3, 4, 5], 6));
-// []
-// []
-// [ [ 1, 2 ], [ 3, 4 ], [ 5 ] ]
-// [ [ 1, 2, 3 ], [ 4, 5 ] ]
-// [ [ 1, 2, 3, 4 ], [ 5 ] ]
-// [ [ 1, 2, 3, 4, 5 ] ]
-// [ [ 1, 2, 3, 4, 5 ] ]
+
+function chunk1(list, size) {
+  let arr = [];
+  let a = [];
+  for (let c = 0; c < list.length; c = c + size) {
+    for (let i = 0; i < size; i++) {
+      a.push(i);
+    }
+    arr.push(a);
+    a = [];
+  }
+  return arr;
+}
+function chunk3(list, size) {
+  let arr = [];
+  let a = [];
+  let i = 0;
+  let rest = list.length % size;
+  let k = Math.floor(list.length / size);
+
+  list.forEach((item, index) => {
+    a.push(item);
+    if ((index + 1) % size == 0) {
+      arr[i] = a;
+      a = [];
+      i++;
+    }
+  });
+  if (rest) {
+    arr.push(list.splice(k * size, rest));
+  }
+  return arr;
+}
+
+console.log(chunk3([1, 2, 3, 4, 5], 2));
