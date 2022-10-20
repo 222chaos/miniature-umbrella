@@ -36,19 +36,16 @@ function chunk1(list, size) {
 }
 
 function chunk3(list, size) {
-  let arr = [];
-  let a = [];
+  let resultArray = [];
+  let array = [];
   list.forEach((item, index) => {
-    a.push(item);
-    if ((index + 1) % size == 0) {
-      arr[arr.length] = a;
-      a = [];
-    }
-    if (index + 1 == list.length && (index + 1) % size !== 0) {
-      arr[arr.length] = a;
-      a = [];
+    array.push(item);
+    if ((index + 1) % size == 0 || index + 1 == list.length) {
+      resultArray.push(array);
+      array = [];
     }
   });
-  return arr;
+  return resultArray;
 }
 console.log(chunk3([1, 2, 3, 4, 5], 2));
+console.log(chunk3([1, 2, 3, 4, 5, 6], 2));
