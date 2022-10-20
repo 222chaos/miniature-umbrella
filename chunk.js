@@ -34,24 +34,23 @@ function chunk1(list, size) {
   }
   return arr;
 }
+
 function chunk3(list, size) {
   let arr = [];
   let a = [];
-  let i = 0;
-  let rest = list.length % size;
-  let k = Math.floor(list.length / size);
 
   list.forEach((item, index) => {
     a.push(item);
     if ((index + 1) % size == 0) {
-      arr[i] = a;
+      arr[arr.length] = a;
       a = [];
-      i++;
+    }
+    if (index + 1 == list.length) {
+      arr[arr.length] = a;
+      a = [];
     }
   });
-  if (rest) {
-    arr.push(list.splice(k * size, rest));
-  }
+
   return arr;
 }
 
