@@ -1,4 +1,3 @@
-// 自己实现
 function chunk(list, size) {
   let len = list.length;
   if (size < 1 || !len) {
