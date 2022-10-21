@@ -40,12 +40,17 @@ function chunk3(list, size) {
   let array = [];
   list.forEach((item, index) => {
     array.push(item);
-    if ((index + 1) % size == 0 || index + 1 == list.length) {
+    if (array.length == size) {
       resultArray.push(array);
       array = [];
+    }
+    if (index + 1 == list.length && array.length > 0) {
+      resultArray.push(array);
     }
   });
   return resultArray;
 }
+
 console.log(chunk3([1, 2, 3, 4, 5], 2));
 console.log(chunk3([1, 2, 3, 4, 5, 6], 2));
+console.log(chunk3([1, 2, 3, 4, 5, 6, 7], 4));
