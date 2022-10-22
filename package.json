@@ -2,26 +2,21 @@
   "name": "name",
   "version": "1.0.0",
   "description": "coool",
-  "main": "chunk.bat.js",
-  "scripts": {
-    "test": "jest"
+  "homepage": "https://github.com/222chaos/miniature-umbrella#readme",
+  "bugs": {
+    "url": "https://github.com/222chaos/miniature-umbrella/issues"
   },
- 
-    
-
-  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/222chaos/miniature-umbrella.git"
   },
-  "author": "2chaos",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/222chaos/miniature-umbrella/issues"
+  "author": "2chaos",
+  "main": "chunk.bat.js",
+  "scripts": {
+    "test": "jest"
   },
-  "homepage": "https://github.com/222chaos/miniature-umbrella#readme",
   "devDependencies": {
     "jest": "^29.2.1"
   }
-
 }
