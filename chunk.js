@@ -1,12 +1,12 @@
 function chunk(list, size) {
   let array = []; //临时数组
   let resultArray = []; //结果数组
-  if(size==0){
-    list=[];
+  if (size == 0) {
+    list = [];
   }
-  if(size<0){
-    list=list.reverse();
-    size=Math.abs(size);
+  if (size < 0) {
+    list = list.reverse();
+    size = Math.abs(size);
   }
   list.forEach((item, index) => {
     array.push(item); //把item先放入临时数组
