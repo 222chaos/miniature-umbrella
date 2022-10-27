@@ -12,4 +12,3 @@ function difference(array, example) {
   return result;
 }
 module.exports = difference;
-console.log(difference([3, 2, 1], [4, 2, 0]));
