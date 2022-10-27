@@ -1,10 +1,10 @@
-function groupBy(collection, akk) {
+function groupBy(collection, hs) {
   let result = [];
   let key = [];
   let array = [];
   let temNum = new Map();
   collection.forEach((item, index) => {
-    key.push(akk(item));
+    key.push(hs(item));
   });
   for (let i = 0; i < key.length; i++) {
     array.push(collection[i]);
@@ -22,4 +22,4 @@ function groupBy(collection, akk) {
   return result;
 }
 
-console.log(groupBy([4.3, 4.2, 5.3, 4.7, 6.5], Math.floor));
+console.log(groupBy([4.3, 4.2, 5.3, 4.7, 6.5, 7.2], Math.floor));
