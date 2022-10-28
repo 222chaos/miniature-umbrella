@@ -1,4 +1,8 @@
 arr = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
-arr.sort();
 
-console.log(arr);
+console.log(!arr[1111]);
+
+if (!obj[key]) {
+  obj[key] = [];
+}
+obj[key].push(item);
