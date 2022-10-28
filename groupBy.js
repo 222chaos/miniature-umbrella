@@ -5,6 +5,7 @@
  * @returns {object} 分组后的数组
  *
  */
+
 function groupBy(collection, hs) {
   let result = {};
   collection.forEach((item) => {
