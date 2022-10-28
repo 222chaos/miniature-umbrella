@@ -1,14 +1,11 @@
 function groupBy(collection, hs) {
   let result = {};
-  let key = [];
   collection.forEach((item, index) => {
-    key.push(hs(item));
-  });
-  key.forEach((item, index) => {
-    if (!result[item]) {
-      result[item] = [];
+    const key = hs(item);
+    if (!result[key]) {
+      result[key] = [];
     }
-    result[item].push(collection[index]);
+    result[key].push(item);
   });
   return result;
 }
