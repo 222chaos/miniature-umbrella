@@ -7,13 +7,11 @@
 
 function omit(object, props) {
   props.forEach((item) => {
-    for (key in object) {
-      if (key === item) {
-        delete object[key];
-      }
-    }
+    delete object[item];
   });
   return object;
 }
-console.log(omit({ a: 1, b: 2, c: 3 }, ['a', 'c']));
+
+console.log(omit({ a: 1, b: 2, c: 3 }, ['a', 'e', 'c']));
+
 module.exports = omit;
