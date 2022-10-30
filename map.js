@@ -1,11 +1,17 @@
+/**
+ *
+ * @param {object} obj 对象
+ * @param {function} hs (key, value) =>newValue
+ * @returns 处理后的对象
+ */
+
 function map(obj, hs) {
   let object = {};
-
+  let tempObject = [];
   for (let key in obj) {
-    obj = hs(key, obj[key]);
-    object[key] = obj;
+    tempObject = hs(key, obj[key]);
+    object[key] = tempObject;
   }
   return object;
 }
-
-console.log(map({ a: 5 }, (key, value) => value * 2));
+module.exports = map;
