@@ -12,6 +12,4 @@ function omit(object, props) {
   return object;
 }
 
-console.log(omit({ a: 1, b: 2, c: 3 }, ['a', 'e', 'c']));
-
 module.exports = omit;

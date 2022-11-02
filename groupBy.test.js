@@ -1,5 +1,4 @@
 ﻿const groupBy = require('./groupBy');
-
 describe('测试 groupBy 函数', () => {
   it('基本使用', () => {
     expect(groupBy([4.3, 4.2, 5.3, 4.7, 6.5], Math.floor)).toEqual({
