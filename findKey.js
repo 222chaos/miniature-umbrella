@@ -1,3 +1,6 @@
+/**
+ *
+ */
 var users = {
   barney: { age: 36, active: true },
   fred: { age: 40, active: false },
