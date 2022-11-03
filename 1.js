@@ -1,2 +1,5 @@
-let arr = [a, b, c];
-console.log(String(arr));
+let a = { a: 1 };
+let b = {};
+b.name = a;
+
+console.log(b);
