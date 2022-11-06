@@ -1,6 +1,6 @@
-const findKey = require('./findKey');
-describe('测试 findKey 函数', () => {
-  it('基本使用', () => {
+const findKey = require("../index/findKey");
+describe("测试 findKey 函数", () => {
+  it("基本使用", () => {
     var users = {
       barney: { age: 36, active: true },
       fred: { age: 40, active: false },
@@ -9,7 +9,7 @@ describe('测试 findKey 函数', () => {
     expect(
       findKey(users, function (o) {
         return o.age < 40;
-      }),
-    ).toEqual('barney');
+      })
+    ).toEqual("barney");
   });
 });

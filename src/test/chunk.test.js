@@ -1,21 +1,21 @@
-const chunk = require('./chunk');
+const chunk = require("../index/chunk");
 
-describe('测试 chunk 函数', () => {
-  it('基本使用', () => {
+describe("测试 chunk 函数", () => {
+  it("基本使用", () => {
     expect(chunk([1, 2, 3, 4, 5, 6, 7], 4)).toEqual([
       [1, 2, 3, 4],
       [5, 6, 7],
     ]);
   });
 
-  it('正好为倍数', () => {
+  it("正好为倍数", () => {
     expect(chunk([1, 2, 3, 4, 5, 6, 7, 8], 4)).toEqual([
       [1, 2, 3, 4],
       [5, 6, 7, 8],
     ]);
   });
 
-  it('不能整除', () => {
+  it("不能整除", () => {
     expect(chunk([1, 2, 3, 4, 5, 6, 7, 8], 3)).toEqual([
       [1, 2, 3],
       [4, 5, 6],
@@ -23,11 +23,11 @@ describe('测试 chunk 函数', () => {
     ]);
   });
 
-  it('为 0 返回空', () => {
+  it("为 0 返回空", () => {
     expect(chunk([1, 2, 3, 4, 5, 6, 7, 8], 0)).toEqual([]);
   });
 
-  it('负数反着来', () => {
+  it("负数反着来", () => {
     expect(chunk([1, 2, 3, 4, 5, 6, 7, 8], -3)).toEqual([
       [8, 7, 6],
       [5, 4, 3],
