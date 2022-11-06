@@ -11,5 +11,5 @@ function omit(object, props) {
   });
   return object;
 }
-
+omit();
 module.exports = omit;
