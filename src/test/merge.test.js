@@ -1,7 +1,7 @@
-const merge = require('../index/merge');
+const merge = require("../index/merge");
 
-describe('测试 merge 函数', () => {
-  it('基本使用', () => {
+describe("测试 merge 函数", () => {
+  it("基本使用", () => {
     expect(
       merge(
         {
@@ -19,34 +19,34 @@ describe('测试 merge 函数', () => {
     });
   });
 
-  it('多层嵌套', () => {
+  it("多层嵌套", () => {
     expect(
       merge(
         {
           z: {
             b: {
-              c: '121',
+              c: "121",
             },
-            d: '12121',
+            d: "12121",
           },
         },
         {
           z: {
             b: {
-              e: '1212',
+              e: "1212",
             },
-            f: '121212',
+            f: "121212",
           },
         }
       )
     ).toEqual({
       z: {
         b: {
-          c: '121',
-          e: '1212',
+          c: "121",
+          e: "1212",
         },
-        d: '12121',
-        f: '121212',
+        d: "12121",
+        f: "121212",
       },
     });
   });
