@@ -100,6 +100,4 @@ function forObject(a, b) {
   return sto;
 }
 console.log(JSON.stringify(merge(['a'], ['b'])));
-console.log(JSON.stringify(merge(c, d)));
-
 module.exports = merge;

@@ -20,22 +20,22 @@ var d = {
   },
 };
 
-const merge = (b, a) => {
+const merge = (target, source) => {
   let sto;
-  if (b == undefined) {
-    return a;
+  if (target == undefined) {
+    return source;
   }
-  if (typeof a !== typeof b) {
-    sto = b;
+  if (typeof source !== typeof target) {
+    sto = target;
   }
-  if (isObjectNotArray(a) && isObjectNotArray(b)) {
-    sto = forObject(a, b);
+  if (isObjectNotArray(source) && isObjectNotArray(target)) {
+    sto = forObject(source, target);
   }
-  if (Array.isArray(a) && Array.isArray(b)) {
-    sto = forArray(a, b);
+  if (Array.isArray(source) && Array.isArray(target)) {
+    sto = forArray(source, target);
   }
-  if (isBase(a) && isBase(b)) {
-    sto = b;
+  if (isBase(source) && isBase(target)) {
+    sto = target;
   }
   return sto;
 };
@@ -54,7 +54,6 @@ function isBase(baseType) {
   }
   return false;
 }
-
 function isObjectNotArray(example) {
   if (typeof example == "object") {
     if (!Array.isArray(example)) {
@@ -63,38 +62,38 @@ function isObjectNotArray(example) {
   }
   return false;
 }
-function forArray(a, b) {
-  let sto = b;
-  a.forEach((_, index) => {
-    if (isBase(a[index])) {
-      sto[index] = b[index];
+function forArray(source, target) {
+  let sto = target;
+  source.forEach((_, index) => {
+    if (isBase(source[index]) && target[index] !== undefined) {
+      sto.push(_);
     }
-    if (typeof a[index] !== typeof b[index]) {
-      sto[index] = merge(a[index], b[index]);
+    if (typeof source[index] !== typeof target[index]) {
+      sto[index] = merge(source[index], target[index]);
     }
-    if (isObjectNotArray(a[index]) && isObjectNotArray(b[index])) {
-      sto[index] = forObject(a[index], b[index]);
+    if (isObjectNotArray(source[index]) && isObjectNotArray(target[index])) {
+      sto[index] = forObject(source[index], target[index]);
     }
-    if (Array.isArray(a[index]) && Array.isArray(b[index])) {
-      sto[index] = forArray(a[index], b[index]);
+    if (Array.isArray(source[index]) && Array.isArray(target[index])) {
+      sto[index] = forArray(source[index], target[index]);
     }
   });
   return sto;
 }
-function forObject(a, b) {
-  let sto = b;
-  Object.keys(a).map((key) => {
-    if (isBase(a[key]) && b[key] !== undefined) {
-      sto[key] = b[key];
+function forObject(source, target) {
+  let sto = target;
+  Object.keys(source).map((key) => {
+    if (isBase(source[key]) && target[key] !== undefined) {
+      sto[key] = target[key];
     }
-    if (typeof a[key] !== typeof b[key]) {
-      sto[key] = merge(a[key], b[key]);
+    if (typeof source[key] !== typeof target[key]) {
+      sto[key] = merge(source[key], target[key]);
     }
-    if (isObjectNotArray(a[key]) && isObjectNotArray(b[key])) {
-      sto[key] = forObject(a[key], b[key]);
+    if (isObjectNotArray(source[key]) && isObjectNotArray(target[key])) {
+      sto[key] = forObject(source[key], target[key]);
     }
-    if (Array.isArray(a[key]) && Array.isArray(b[key])) {
-      sto[key] = forArray(a[key], b[key]);
+    if (Array.isArray(source[key]) && Array.isArray(target[key])) {
+      sto[key] = forArray(source[key], target[key]);
     }
   });
   return sto;
