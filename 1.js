@@ -98,4 +98,3 @@ function forObject(source, target) {
   });
   return sto;
 }
-console.log(JSON.stringify(merge(["a"], ["b"])));
