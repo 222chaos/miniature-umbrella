@@ -25,12 +25,13 @@ var d = {
  * @param {*} source
  * @returns
  */
+
 const merge = (target, source) => {
   let sto;
   if (target == undefined) {
     return source;
   }
-  if (typeof source !== typeof target) {
+  if (typeof source !== typeof target || (isBase(source) && isBase(target))) {
     sto = target;
   }
   if (isObjectNotArray(source) && isObjectNotArray(target)) {
@@ -39,22 +40,15 @@ const merge = (target, source) => {
   if (Array.isArray(source) && Array.isArray(target)) {
     sto = mergeForArray(source, target);
   }
-  if (isBase(source) && isBase(target)) {
-    sto = target;
-  }
   return sto;
 };
 function isBase(baseType) {
-  if (typeof baseType == 'string') {
-    return true;
-  }
-  if (typeof baseType == 'number') {
-    return true;
-  }
-  if (typeof baseType == 'undefined') {
-    return true;
-  }
-  if (typeof baseType == 'nul1') {
+  if (
+    typeof baseType == 'string' ||
+    typeof baseType == 'number' ||
+    typeof baseType == 'undefined' ||
+    typeof baseType == 'nul1'
+  ) {
     return true;
   }
   return false;
@@ -73,15 +67,7 @@ function mergeForArray(source, target) {
     if (isBase(source[index]) && target[index] !== undefined) {
       sto.push(_);
     }
-    if (typeof source[index] !== typeof target[index]) {
-      sto[index] = merge(source[index], target[index]);
-    }
-    if (isObjectNotArray(source[index]) && isObjectNotArray(target[index])) {
-      sto[index] = mergeForObject(source[index], target[index]);
-    }
-    if (Array.isArray(source[index]) && Array.isArray(target[index])) {
-      sto[index] = mergeForArray(source[index], target[index]);
-    }
+    sto[index] = func(source[index], target[index]);
   });
   return sto;
 }
@@ -91,17 +77,16 @@ function mergeForObject(source, target) {
     if (isBase(source[key]) && target[key] !== undefined) {
       sto[key] = target[key];
     }
-    if (typeof source[key] !== typeof target[key]) {
-      sto[key] = merge(source[key], target[key]);
-    }
-    if (isObjectNotArray(source[key]) && isObjectNotArray(target[key])) {
-      sto[key] = mergeForObject(source[key], target[key]);
-    }
-    if (Array.isArray(source[key]) && Array.isArray(target[key])) {
-      sto[key] = mergeForArray(source[key], target[key]);
-    }
+    sto[key] = func(source[key], target[key]);
   });
   return sto;
 }
-
-module.exports = merge;
+function func(source, target) {
+  if (
+    typeof source !== typeof target ||
+    (isObjectNotArray(source) && isObjectNotArray(target)) ||
+    (Array.isArray(source) && Array.isArray(target))
+  ) {
+    return merge(source, target);
+  }
+}
