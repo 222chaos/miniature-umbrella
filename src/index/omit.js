@@ -5,7 +5,6 @@
  * @returns 剩下的
  */
 function omit(object, props) {
-  console.log(object, props);
   props.forEach((item) => {
     delete object[item];
   });

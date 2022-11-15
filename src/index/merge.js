@@ -90,3 +90,4 @@ function func(source, target) {
     return merge(source, target);
   }
 }
+module.exports = merge;
