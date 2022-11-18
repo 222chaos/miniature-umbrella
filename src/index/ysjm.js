@@ -9,6 +9,7 @@ function ysjm(string, offset) {
   let array = [];
   Array.from(string).forEach((item) => {
     let temp = item.charCodeAt();
+
     if (temp > 64 && temp < 91) {
       temp = ((temp - 65 + offset + 26) % 26) + 65;
     } else if (temp > 96 && temp < 123) {
