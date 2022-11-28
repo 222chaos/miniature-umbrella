@@ -15,10 +15,12 @@
   "main": "chunk.bat.js",
   "scripts": {
     "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-    "test": "jest"
+    "test": "jest",
+    "tsc": "tsc"
   },
   "devDependencies": {
     "jest": "^29.2.1",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "typescript": "^4.9.3"
   }
 }
