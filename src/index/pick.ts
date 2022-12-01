@@ -1,5 +1,5 @@
-function pick(object, props) {
-  let result = {};
+function pick<T>(object:T, props:Array<keyof T>) {
+  let result:any;
   props.forEach((item) => {
     result[item] = object[item];
   });
