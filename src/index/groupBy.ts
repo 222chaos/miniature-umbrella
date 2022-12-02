@@ -6,8 +6,8 @@
  *
  */
 
-function groupBy(collection:number[], hs) {
-  let result = {};
+function groupBy(collection:number[], hs:(x:number)=>string|number) {
+  let result:any = {};
   collection.forEach((item) => {
     const key = hs(item);
     if (!result[key]) {
