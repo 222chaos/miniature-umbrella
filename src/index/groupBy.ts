@@ -6,7 +6,7 @@
  *
  */
 
-function groupBy(collection: number[], hs: (x: number) => string | number): object {
+function groupBy(collection: number[], hs: (x: number) => string | number): Record<string, any> {
   let result: any = {};
   collection.forEach((item) => {
     const key = hs(item);
