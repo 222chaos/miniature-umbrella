@@ -6,7 +6,7 @@
  * @returns set之后的对象
  */
 
-function set(inception: {}, key: string[], value: number) {
+function set(inception: Record<any, any>, key: string[], value: string) {
   let storage = inception;
   key.reverse();
   storage = value;

@@ -17,4 +17,5 @@ function set(inception, key, value) {
   });
   return storage;
 }
+console.log(set({}, ['a', 'b'], 123));
 module.exports = set;
