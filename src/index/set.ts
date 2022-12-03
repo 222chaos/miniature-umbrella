@@ -6,12 +6,12 @@
  * @returns set之后的对象
  */
 
-function set(inception, key, value) {
+function set(inception: {}, key: string[], value: number) {
   let storage = inception;
   key.reverse();
   storage = value;
   key.forEach((item) => {
-    let temp = {};
+    let temp: Record<string, any> = {};
     temp[item] = storage;
     storage = temp;
   });

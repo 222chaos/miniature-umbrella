@@ -26,7 +26,7 @@ var d = {
  * @returns
  */
 
-const merge = (target:object, source:) => {
+const merge = (target: {}, source: {}) => {
   let sto;
   if (target == undefined) {
     return source;
@@ -42,18 +42,18 @@ const merge = (target:object, source:) => {
   }
   return sto;
 };
-function isBase(baseType) {
+function isBase(baseType: {}) {
   if (
     typeof baseType == 'string' ||
     typeof baseType == 'number' ||
-    typeof baseType == 'undefined' ||
-    typeof baseType == 'nul1'
+    typeof baseType == 'undefined'
+    //typeof baseType == 'nul1'
   ) {
     return true;
   }
   return false;
 }
-function isObjectNotArray(example) {
+function isObjectNotArray(example: {}) {
   if (typeof example == 'object') {
     if (!Array.isArray(example)) {
       return true;
@@ -61,7 +61,7 @@ function isObjectNotArray(example) {
   }
   return false;
 }
-function mergeForArray(source, target) {
+function mergeForArray(source: string[], target: Record<string, any>) {
   let sto = target;
   source.forEach((_, index) => {
     if (isBase(source[index]) && target[index] !== undefined) {
@@ -71,7 +71,7 @@ function mergeForArray(source, target) {
   });
   return sto;
 }
-function mergeForObject(source, target) {
+function mergeForObject(source: Record<string, any>, target: Record<string, any>) {
   let sto = target;
   Object.keys(source).map((key) => {
     if (isBase(source[key]) && target[key] !== undefined) {
@@ -81,7 +81,7 @@ function mergeForObject(source, target) {
   });
   return sto;
 }
-function func(source, target) {
+function func(source: {}, target: {}) {
   if (
     typeof source !== typeof target ||
     (isObjectNotArray(source) && isObjectNotArray(target)) ||
