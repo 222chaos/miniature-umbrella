@@ -5,9 +5,9 @@
  * @returns 处理后的对象
  */
 
-function map(obj:, hs:(x:string,y:number)=>number) {
-  let object = {};
-  let tempObject = [];
+function map(obj: Record<string, any>, hs: (x: string, y: number) => number) {
+  let object: Record<string, any> = {};
+  let tempObject: {} = [];
   for (let key in obj) {
     tempObject = hs(key, obj[key]);
     object[key] = tempObject;
